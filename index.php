@@ -11,14 +11,14 @@ $channel_secret='35e654c7cd3a978fab43c926c660dd98';
 
 //Get message from line API
 $content=file_get_contents('php://input');
-$event=json_decode($content, true);
+$events=json_decode($content, true);
 
 if(!is_null($events['events'])){
     //Loop through each event
-    foreach($events['events']as $event){
+    foreach($events['events']as $events){
         //line API send a lot of event type, we interted in message only
-        if($event['type']=='message'){
-            switch($event['message']['type']){
+        if($events['type']=='message'){
+            switch($events['message']['type']){
                 case 'text':
                     //Get replayToken
                     $replyToken=$event['replyToken'];
