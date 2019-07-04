@@ -15,10 +15,10 @@ $events=json_decode($content, true);
 
 if(!is_null($events['events'])){
     //Loop through each event
-    foreach($events['events']as $events){
+    foreach($events['events']as $event){
         //line API send a lot of event type, we interted in message only
-        if($events['type']=='message'){
-            switch($events['message']['type']){
+        if($event['type']=='message'){
+            switch($event['message']['type']){
                 case 'text':
                     //Get replayToken
                     $replyToken=$event['replyToken'];
