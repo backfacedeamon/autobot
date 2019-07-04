@@ -23,24 +23,19 @@ if(!is_null($events['events'])){
                 
                 case'text':
                     $respMessage= 'Hello, your messsage is '.$event['message']['text'];
-
-                $httpClient = new CurlHTTPClient($channel_token);
-                $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-                $textMessageBuilder = new TextMessageBuilder($respMessage);
-                $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-
                 break;
                 
                  case 'image':
                       $messageID=$event['message']['id'];
                       $respMessage= 'Hello, your image ID is '.$messageID;
-                    
                 break;
-            }
+                
                 $httpClient = new CurlHTTPClient($channel_token);
                 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                 $textMessageBuilder = new TextMessageBuilder($respMessage);
                 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+            }
+
         }
 
     }
