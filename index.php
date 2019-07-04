@@ -30,8 +30,8 @@ if(!is_null($events['events'])){
                       $respMessage= 'Hello, your image ID is '.$messageID;
                 break;
                 
-                case 'sticker':
-                    $messageID=$event['message']['packageid'];
+                 case 'sticker':
+                    $messageID=$event['message']['packageId'];
                     $respMessage='Hello, your Sticker Package ID is '.$messageID;
                 break;
 
