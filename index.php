@@ -21,15 +21,15 @@ if(!is_null($events['events'])){
             switch($event['message']['type']){
                 case 'text':
                     //Get replayToken
-                    $replyToken=$event['replayToken'];
+                    $replyToken=$event['replyToken'];
 
                     //Replay message
                     $respMessage='Hello, your message is '.$event['message']['text'];
 
                     $httpClient=newCurlHTTPClient($channel_token);
-                    $bot=newLINEBot($httpClient, array('channelSecret'=> $channel_secret));
+                    $bot=newLINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder=newTextMessageBuilder($respMessage);
-                    $response=$bot->replayMessage($replayToken, $textMessageBuilder);
+                    $response=$bot->replayMessage($replyToken, $textMessageBuilder);
                 break;
             }
         }
