@@ -4,7 +4,7 @@ require_once('./vendor/autoload.php');
 //Namespace
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot;
-use \LINE\LINEBot\MessageBuilder\TexMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
 $channel_token='lWtY8ZGPyvz4W0zzz5KH4eHcR5cerA0sqGCEmjwu976pAaNsikSl4H931y8b1mBxR3GImGGUDhYM6RJKXyZVyQAVn0aY0zxmWxntOYGmw9tQl99TifEWI6oqPmnkhJF+b1V/pExiEk9/fW+7z9yYTwdB04t89/1O/w1cDnyilFU=';
 $channel_secret='35e654c7cd3a978fab43c926c660dd98';
