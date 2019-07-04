@@ -36,7 +36,7 @@ if(!is_null($events['events'])){
                 break;
 
                 case 'video':
-                    $messageID=$event['message']['id'];
+                    $fileID=$event['message']['id'];
                     $response=$bot->getMessageContent($fileID);
                     $fileName='linebot.mp.4';
                     $file=fopen($fileName, 'w');
