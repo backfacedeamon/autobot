@@ -42,7 +42,7 @@ if(!is_null($events['events'])){
                     $fileName='linebot.mp4';
                     $file=fopen($fileName, 'w');
                     fwrite($file, $response->getRawBody());
-                    $respMessage='Hello, your Video is '.$messageID;
+                    $respMessage='Hello, your video ID is '.$messageID;
                 break;
             }
 
