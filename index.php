@@ -19,19 +19,7 @@ if(!is_null($events['events'])){
         //line API send a lot of event type, we interted in message only
         if($event['type']=='message'){
             switch($event['message']['type']){
-                case 'text':
-                    //Get replayToken
-                    $replyToken=$event['replyToken'];
-
-                    //Replay message
-                    $respMessage='Hello, your message is '.$event['message']['text'];
-
-                    $httpClient = new CurlHTTPClient($channel_token);
-                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-                    $textMessageBuilder = new TextMessageBuilder($respMessage);
-                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-                break;
-
+                
                  case 'image':
                       $messageID=$event['message']['id'];
                       $respMessage= 'Hello, your image ID is '.$messageID;
@@ -39,14 +27,12 @@ if(!is_null($events['events'])){
                 break;
             default:
                 $respMessage='Please send image only';
-                
+                break;
+            }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder = new TextMessageBuilder($respMessage);
                     $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-                break;
-
-            }
         }
 
     }
