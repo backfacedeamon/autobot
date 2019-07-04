@@ -36,9 +36,6 @@ if(!is_null($events['events'])){
                       $respMessage= 'Hello, your image ID is '.$messageID;
                     
                 break;
-            default:
-                $respMessage='Please send image only';
-                break;
             }
                 $httpClient = new CurlHTTPClient($channel_token);
                 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
