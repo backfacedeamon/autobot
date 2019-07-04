@@ -30,6 +30,11 @@ if(!is_null($events['events'])){
                       $respMessage= 'Hello, your image ID is '.$messageID;
                 break;
                 
+                case 'sticker':
+                    $messageID=$event['message']['packageId'];
+                    $respMessage='Hello, your Sticker Package ID is '.$messageID;
+                break;
+                            
                 $httpClient = new CurlHTTPClient($channel_token);
                 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                 $textMessageBuilder = new TextMessageBuilder($respMessage);
