@@ -39,6 +39,11 @@ if(!is_null($events['events'])){
                 break;
             default:
                 $respMessage='Please send image only';
+                
+                    $httpClient = new CurlHTTPClient($channel_token);
+                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                    $textMessageBuilder = new TextMessageBuilder($respMessage);
+                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 break;
 
             }
