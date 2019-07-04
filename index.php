@@ -35,7 +35,7 @@ if(!is_null($events['events'])){
                     $respMessage='Hello, your Sticker Package ID is '.$messageID;
                 break;
 
-                case 'video':
+                 case 'video':
                     $messageID=$event['message']['id'];
                     $fileID=$event['message']['id'];
                     $response=$bot->getMessageContent($fileID);
