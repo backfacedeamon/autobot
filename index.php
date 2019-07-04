@@ -29,7 +29,7 @@ if(!is_null($events['events'])){
                     $httpClient=newCurlHTTPClient($channel_token);
                     $bot=newLINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder=newTextMessageBuilder($respMessage);
-                    $response=$bot->replayMessage($replyToken, $textMessageBuilder);
+                    $response=$bot->replyMessage($replyToken, $textMessageBuilder);
                 break;
             }
         }
