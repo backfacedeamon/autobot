@@ -18,6 +18,7 @@ if(!is_null($events['events'])){
     foreach($events['events']as $event){
         //line API send a lot of event type, we interted in message only
         if($event['type']=='message'){
+            $peplyToken=$event['replyToken'];
             switch($event['message']['type']){
                 
                  case 'image':
