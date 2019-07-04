@@ -34,6 +34,14 @@ if(!is_null($events['events'])){
                     $messageID=$event['message']['packageId'];
                     $respMessage='Hello, your Sticker Package ID is '.$messageID;
                 break;
+
+                case 'video':
+                    $messageID=$event['message']['id'];
+                    $response=$bot->getMessageContent($fileID);
+                    $fileName='linebot.mp.4';
+                    fwrite($file, $response->getRawBody());
+                    $respMessage='Hello, your Video is '.$messageID;
+                break;
             }
 
                 $httpClient = new CurlHTTPClient($channel_token);
