@@ -38,7 +38,7 @@ if(!is_null($events['events'])){
                 case 'video':
                     $fileID=$event['message']['id'];
                     $response=$bot->getMessageContent($fileID);
-                    $fileName='linebot.mp.4';
+                    $fileName='linebot.mp4';
                     $file=fopen($fileName, 'w');
                     fwrite($file, $response->getRawBody());
                     $respMessage='Hello, your Video is '.$messageID;
