@@ -13,6 +13,10 @@ $channel_secret='35e654c7cd3a978fab43c926c660dd98';
 $content=file_get_contents('php://input');
 $events=json_decode($content, true);
 
+class TextMessageBuilder implements MessageBuilder
+{
+    private $respMessage;
+}
 if(!is_null($events['events'])){
     //Loop through each event
     foreach($events['events']as $event){
