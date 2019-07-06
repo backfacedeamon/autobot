@@ -21,65 +21,41 @@ $events=json_decode($content, true);
 if(!is_null($events['events'])){
     //Loop through each event
     foreach($events['events']as $event){
-        //line API send a lot of event type, we interted in message only
-        if($event['type']=='message'){
+
+        //Line API send a lot of event type, we interested in massage only.
+        if($event['type']=='message'&& $event['message']['type']=='text'){
+
+            //Get replyToken
             $replyToken=$event['replyToken'];
-            switch($event['message']['type']){
-                
-                case'text':
-                    $respMessage= 'Hello, your messsage is '.$event['message']['text'];
-                break;
-                
-                 case 'image':
-                      $messageID=$event['message']['id'];
-                      $respMessage= 'Hello, your image ID is '.$messageID;
-                break;
-                
-                 case 'sticker':
-                    $messageID=$event['message']['packageId'];
-                    $respMessage='Hello, your Sticker Package ID is '.$messageID;
-                break;
 
-                 case 'video':
-                    $messageID=$event['message']['id'];
-                    $fileID=$event['message']['id'];
-                    $response=$bot->getMessageContent($fileID);
-                    $fileName='linebot.mp4';
-                    $file=fopen($fileName, 'w');
-                    fwrite($file, $response->getRawBody());
-                    $respMessage='Hello, your video ID is '.$messageID;
-                break;
+            //split message then keep it in database.
+            $appointments=explode(',', $event['message']['text']);
 
-                case 'audio':
-                    $messageID=$event['message']['id'];
-                    $fileID=$event['message']['id'];
-                    $response=$bot->getMessageContent($fileID);
-                    $fileName='linebot.m4a';
-                    $file=fopen($fileName, 'w');
-                    fwrite($file, $response->getRawBody());
-                    $respMessage='Hello, your audio ID is '.$messageID;
-                    break;
+            if(count($appointments)==2){
 
-                case 'location':
-                    $address=$event['message']['address'];
-                    $respMessage='Hello, your address is '.$address;
-                    break;
+                $host = '';
+                $dbname='';
+                $user='';
+                $pass='';
+                $connecttion=new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+
+                $params=array(
+                    'time' => $appointments[0],
+                    'content'=> $appointmennts[1],
+                );
+
+                    $statement=$connecttion->prepare("INSERT INTO appointments (time, content)VALUES(:time,:content)");
+
+                    $result=$statement->execute($params);
+
+                    $respmessage='Your appointment has saved';
+            }else{
+                    $respmessage='You can send appointment like this "12.00,House keeping';
             }
-
-                $textMessageBuilder = new TextMessageBuilder($respMessage);
-                $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-            }
-            if($event['type']=='follow'){
-                $replyToken=$event['replyToken'];
-                $respMessage='ขอบคุณ';
-                $httpClient=new CurlHTTPClient($channel_token);
-                $bot=new LINEBot($httpClient, array('chanelSecret'-> $channel_secret));
                 $textMessageBuilder=new TextMessageBuilder($respMessage);
                 $response=$bot->replyMessage($replyToken, $textMessageBuilder);
-            }
         }
-
     }
-    
-
+}
 echo"OK";
+    
