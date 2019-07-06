@@ -6,8 +6,13 @@ use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
+//Token
 $channel_token='lWtY8ZGPyvz4W0zzz5KH4eHcR5cerA0sqGCEmjwu976pAaNsikSl4H931y8b1mBxR3GImGGUDhYM6RJKXyZVyQAVn0aY0zxmWxntOYGmw9tQl99TifEWI6oqPmnkhJF+b1V/pExiEk9/fW+7z9yYTwdB04t89/1O/w1cDnyilFU=';
 $channel_secret='35e654c7cd3a978fab43c926c660dd98';
+
+//LINEBot
+$httpClient=new CurlHTTPClient($channel_token);
+$bot=new LINEBot($httpClient, array('chanelSecret'-> $channel_secret));
 
 //Get message from line API
 $content=file_get_contents('php://input');
@@ -46,12 +51,12 @@ if(!is_null($events['events'])){
                 break;
 
                 case 'audio':
-                $messageID=$event['message']['id'];
-                $fileID=$event['message']['id'];
-                $response=$bot->getMessageContent($fileID);
-                $fileName='linebot.m4a';
-                $file=fopen($fileName, 'w');
-                fwrite($file, $response->getRawBody());
+                    $messageID=$event['message']['id'];
+                    $fileID=$event['message']['id'];
+                    $response=$bot->getMessageContent($fileID);
+                    $fileName='linebot.m4a';
+                    $file=fopen($fileName, 'w');
+                    fwrite($file, $response->getRawBody());
                     $respMessage='Hello, your audio ID is '.$messageID;
                     break;
 
@@ -60,10 +65,7 @@ if(!is_null($events['events'])){
                     $respMessage='Hello, your address is '.$address;
                     break;
             }
-            
 
-                $httpClient = new CurlHTTPClient($channel_token);
-                $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                 $textMessageBuilder = new TextMessageBuilder($respMessage);
                 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
             }
