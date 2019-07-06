@@ -39,11 +39,20 @@ if(!is_null($events['events'])){
                     $messageID=$event['message']['id'];
                     $fileID=$event['message']['id'];
                     $response=$bot->getMessageContent($fileID);
-                    $fileName='linebot.m4a';
+                    $fileName='linebot.mp4';
                     $file=fopen($fileName, 'w');
                     fwrite($file, $response->getRawBody());
                     $respMessage='Hello, your video ID is '.$messageID;
                 break;
+
+                case 'audio':
+                    $messageID=$event['message']['id'];
+                    $fileID=$bot->getMessageContent($fileID);
+                    $fileName='linebot.m4a';
+                    $file=fopen($filename, 'w');
+                    fwrite($file, $response->getRawBody());
+                    $respMessage='Hello, your audio ID is '.$messageID;
+                    break;
             }
 
                 $httpClient = new CurlHTTPClient($channel_token);
