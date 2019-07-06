@@ -47,7 +47,8 @@ if(!is_null($events['events'])){
 
                 case 'audio':
                     $messageID=$event['message']['id'];
-                    $fileID=$bot->getMessageContent($fileID);
+                    $fileID=$event['message']['id'];
+                    $response=$bot->getMessageContent($fileID);
                     $fileName='linebot.m4a';
                     $file=fopen($filename, 'w');
                     fwrite($file, $response->getRawBody());
