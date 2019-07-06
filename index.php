@@ -17,16 +17,6 @@ if(!is_null($events['events'])){
     //Loop through each event
     foreach($events['events']as $event){
         //line API send a lot of event type, we interted in message only
-        if($event['type']=='follow'){
-            $replyToken=$event['replytoken'];
-            $respMessage='Thanks you. I try to be your best friend';
-
-            $httpClient = new CurlHTTPClient($channel_token);
-            $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-            
-            $textMessageBuilder = new TextMessageBuilder($respMessage);
-            $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-        }
         if($event['type']=='message'){
             $replyToken=$event['replyToken'];
             switch($event['message']['type']){
