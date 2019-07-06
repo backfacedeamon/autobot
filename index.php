@@ -10,10 +10,6 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 $channel_token='lWtY8ZGPyvz4W0zzz5KH4eHcR5cerA0sqGCEmjwu976pAaNsikSl4H931y8b1mBxR3GImGGUDhYM6RJKXyZVyQAVn0aY0zxmWxntOYGmw9tQl99TifEWI6oqPmnkhJF+b1V/pExiEk9/fW+7z9yYTwdB04t89/1O/w1cDnyilFU=';
 $channel_secret='35e654c7cd3a978fab43c926c660dd98';
 
-//LINEBot
-$httpClient=new CurlHTTPClient($channel_token);
-$bot=new LINEBot($httpClient, array('chanelSecret'-> $channel_secret));
-
 //Get message from line API
 $content=file_get_contents('php://input');
 $events=json_decode($content, true);
@@ -52,6 +48,9 @@ if(!is_null($events['events'])){
             }else{
                     $respmessage='You can send appointment like this "12.00,House keeping';
             }
+                $httpClient=new CurlHTTPClient($channel_token);
+                $bot=new LINEBot($httpClient, array('chanelSecret'-> $channel_secret));
+                
                 $textMessageBuilder=new TextMessageBuilder($respMessage);
                 $response=$bot->replyMessage($replyToken, $textMessageBuilder);
         }
