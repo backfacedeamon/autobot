@@ -54,6 +54,11 @@ if(!is_null($events['events'])){
                     fwrite($file, $response->getRawBody());
                     $respMessage='Hello, your audio ID is '.$messageID;
                     break;
+
+                    case 'location':
+                        $address=$event['message']['address'];
+                        $respMessage='Hello, your address is '.$address;
+                    break;
             }
 
                 $httpClient = new CurlHTTPClient($channel_token);
