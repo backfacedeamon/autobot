@@ -37,16 +37,16 @@ if(!is_null($events['events'])){
 
                 $params=array(
                     'time' => $appointments[0],
-                    'content'=> $appointmennts[1],
+                    'content'=> $appointments[1],
                 );
 
-                    $statement=$connecttion->prepare("INSERT INTO appointments (time, content)VALUES(:time,:content)");
+                    $statement=$connecttion->prepare("INSERT INTO appointments (time, content)VALUES(:time, :content)");
 
                     $result=$statement->execute($params);
 
-                    $respmessage='Your appointment has saved';
+                    $respmessage='Your appointment has saved.';
             }else{
-                    $respmessage='You can send appointment like this "12.00,House keeping';
+                    $respmessage='You can send appointment like this "12.00,House keeping."';
             }
                 $httpClient=new CurlHTTPClient($channel_token);
                 $bot=new LINEBot($httpClient, array('chanelSecret'=> $channel_secret));
