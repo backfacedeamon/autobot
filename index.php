@@ -71,7 +71,7 @@ if(!is_null($events['events'])){
             }
             if($event['type']=='follow'){
                 $replyToken=$event['replyToken'];
-                $respMessage='Thanks you I try to be your best friend';
+                $respMessage='ขอบคุณ';
                 $httpClient=new CurlHTTPClient($channel_token);
                 $bot=new LINEBot($httpClient, array('chanelSecret'-> $channel_secret));
                 $textMessageBuilder=new TextMessageBuilder($respMessage);
