@@ -60,6 +60,10 @@ if(!is_null($events['events'])){
                         $respMessage='Hello, your address is '.$address;
                     break;
             }
+            if($event['type']=='follow'){
+                $replyToken=$event['replytoken'];
+                $respMessage='Thanks you. I try to be your best friend';
+            }
 
                 $httpClient = new CurlHTTPClient($channel_token);
                 $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
