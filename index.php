@@ -39,7 +39,6 @@ if(!is_null($events['events'])){
                     'time' => $appointments[0],
                     'content'=> $appointments[1],
                 );
-
                     $statement=$connecttion->prepare("INSERT INTO appointments (time, content)VALUES(:time, :content)");
 
                     $result=$statement->execute($params);
