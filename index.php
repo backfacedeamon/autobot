@@ -29,10 +29,10 @@ if(!is_null($events['events'])){
 
             if(count($appointments)==2){
 
-                $host = 'ec2-23-21-109-177.compute-1.amazonaws.com';
-                $dbname='de51ir4vvj5boc';
-                $user='epxpqxtnhhdfbc';
-                $pass='b3964c01ec02b9638023df99d6bf3ff2648227ce10421bb9e8e8ad1251df5e04';
+                $host = 'ec2-54-235-92-43.compute-1.amazonaws.com';
+                $dbname='ddqiktp7kdbt1';
+                $user='emnxsaqcgcvhgv';
+                $pass='a54775509dc91ed67584f2ec108f808c82fd0158e5c74d89f33ff4eb70dd6314';
                 $connecttion=new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
                 $params=array(
