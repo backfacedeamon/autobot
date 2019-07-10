@@ -47,7 +47,7 @@ if(!is_null($events['events'])){
             }else{
                     $respMessage='You can send appointment like this "12.00,House keeping."';
 
-                    $sql=sprintf("SELECT*FROM appointments WHERE 'time' AND 'content' = \'$q\' ",$appointments);
+                    $sql=sprintf("UPDATE `%s` SET `stock` = :amount WHERE `time` AND `content`  = \'$q\'", $appointments);
                     $result = $connecttion->query($sql);
                     $respMessage = 'ข้อมูล ';
             break;
