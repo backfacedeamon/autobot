@@ -43,13 +43,14 @@ if(!is_null($events['events'])){
 
                     $result=$statement->execute($params);
 
-                    $sql=sprintf("SELECT*FROM appointments WHERE time AND content ");
-                    $result = $connecttion->query($sql);
-                    $respMessage = 'ข้อมูล ';
-
                     $respMessage='Your appointment has saved.';
             }else{
                     $respMessage='You can send appointment like this "12.00,House keeping."';
+
+                    $sql=sprintf("SELECT*FROM appointments WHERE time AND content ");
+                    $result = $connecttion->query($sql);
+                    $respMessage = 'ข้อมูล ';
+            break;
             }
                 $httpClient=new CurlHTTPClient($channel_token);
                 $bot=new LINEBot($httpClient, array('channelSecret'=> $channel_secret));
