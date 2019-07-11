@@ -47,7 +47,7 @@ if(!is_null($events['events'])){
             }else{
                     $respMessage='You can send appointment like this "12.00,House keeping."';
 
-                    $sql = sprintf("SELECT*FROM appointment WHERE time = '%i', $time);
+                    $query = sprintf("SELECT*FROM appointments WHERE content LIKE '%%%s%%' ", $content);
                     $result = $connection->query($sql);
                     $respMessage = 'ข้อมูล ';
             break;
