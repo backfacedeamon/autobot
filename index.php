@@ -47,7 +47,7 @@ if(!is_null($events['events'])){
             }else{
                     $respMessage='You can send appointment like this "12.00,House keeping."';
 
-                    $sql = sprintf("SELECT * FROM table WHERE time = '%i' AND content = '%s' " ,$appointments);
+                    $sql = sprintf("SELECT*FROM appointment WHERE time = '%i', $time);
                     $result = $connection->query($sql);
                     $respMessage = 'ข้อมูล ';
             break;
