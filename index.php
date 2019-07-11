@@ -47,7 +47,7 @@ if(!is_null($events['events'])){
             }else{
                     $respMessage='You can send appointment like this "12.00,House keeping."';
 
-                    $query = sprintf("SELECT*FROM appointments WHERE content = 'hardware' ", $event['message']['text']);
+                    $sql = sprintf("SELECT*FROM appointments WHERE content = 'hardware' ", $event['message']['text']);
                     $result = $connection->query($sql);
                     $amount = hardware;
                     if($result){
