@@ -49,7 +49,11 @@ if(!is_null($events['events'])){
 
                     $query = sprintf("SELECT*FROM appointments WHERE content = 'hardware' ", $event['message']['text']);
                     $result = $connection->query($sql);
-                    $respMessage = 'ข้อมูล ';
+                    $amount = hardware;
+                    if($result){
+                        $amount=$result->rowCount();
+                    }
+                    $respMessage = 'ข้อมูล= '.$amount;
             break;
             }
                 $httpClient=new CurlHTTPClient($channel_token);
