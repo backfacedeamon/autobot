@@ -48,7 +48,7 @@ if(!is_null($events['events'])){
                     $respMessage='You can send appointment like this "12.00,House keeping."';
 
                     $sql = "SELECT * FROM appointments WHERE id IS NULL OR time = '' OR content = %s "; 
-                    $query_sql = sprintf($sql,GetSQLValueString($colname_time, "text"),GetSQLValueString($colname_content, "text"));
+                    $query_sql = sprintf($sql,GetSQLValuetime($colname_time, "text"),GetSQLValuecontent($colname_content, "text"));
                     $respMessage = 'ข้อมูล ';
             break;
             }
